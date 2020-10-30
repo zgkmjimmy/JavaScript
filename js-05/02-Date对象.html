@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Date() 日期对象 是一个构造函数 必须使用new 来调用创建我们的日期对象
+        var arr = new Array(); //创建一个数组对象
+        var obj = new Object(); //创建了一个对象实例
+        //1.使用Date  如果没有参数 返回当前系统的当前时间
+        var date = new Date();
+        console.log(date);
+        //2.参数的常用写法 数字型 2019，10，01 或者是字符串型 '2019-10-1 8：8：8'
+        var date1 = new Date(2019, 10, 01);
+        console.log(date1);// 返回的是11月 不是10月
+
+        var date2 = new Date('2019-10-1 8:8:8');
+        console.log(date2);
+
+
+        //格式化 日期 年月日
+        var date = new Date();
+        console.log(date.getFullYear());//返回当前日期的年
+        console.log(date.getMonth() + 1);//月份 返回的月份小一个月 记得月份+1
+        console.log(date.getDate()); //返回的是几号
+        console.log(date.getDay());// 周一返回的是1 周六返回的是6 但 周日返回的是0
+        //我们写一个2019年5月1日 星期三
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var dates = date.getDate();
+        var day = date.getDay();
+        var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        console.log('今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day]);
+
+        //格式化日期 时分秒
+        console.log(date.getHours());//时
+        console.log(date.getMinutes());//分
+        console.log(date.getSeconds());//秒
+
+        //要求封装一个函数返回当前时间的时分秒 格式08：08：08
+        function getTimer() {
+            var time = new Date();
+            var h = time.getHours();
+            h = h < 10 ? '0' + h : h;
+            var m = time.getMinutes();
+            m = m < 10 ? '0' + m : m;
+            var s = time.getSeconds();
+            s = s < 10 ? '0' + s : s;
+            return h + ':' + m + ':' + s;
+        }
+        console.log(getTimer());
+
+        //获取Date总的毫秒数 不是当前时间的毫秒数 而是距离1970年1月1日过了多少毫秒数
+        //1.通过valueOf() getTime()
+        var date = new Date();
+        console.log(date.valueOf());//就是 我们现在时间距离1970.1.1 总的毫秒数
+        console.log(date.getTime());
+        //2.简单的写法(最常用的写法)
+        var date2 = +new Date();//+new Date() 返回的就是总的毫秒数
+        console.log(date2);
+        //3.H5新增的 获取总的毫秒数
+        console.log(Date.now());
+
+        // 把总的毫秒数转化为天，时，分，秒(时间戳转换为时分秒)
+        //转换公式如下：
+        //d=parseInt(总秒数/60/60/24)； //计算天数
+        //h=parseInt(总秒数/60/60%24); //计算小时
+        //m=parseInt(总秒数/60%60)； //计算分钟
+        //s=parseInt(总秒数%60)； //计算当前秒数
+
+    </script>
+</head>
+
+<body>
+    <img src="images/Snipaste_2020-06-23_11-44-47.png" alt="">
+</body>
+
+</html>
